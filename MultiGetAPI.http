@@ -1,0 +1,27 @@
+### Get multiple Index
+
+### if you declare what index you want to get, you just need _id in ids
+POST http://localhost:9200/account/_mget
+Content-Type: application/json
+
+{
+    "ids" : ["1","2","3"]
+}
+
+### If you dont declare index what you want to get, you need insert name index, and _id in doc
+
+POST http://localhost:9200/_mget
+Content-Type: application/json
+
+{
+    "docs" : [
+        {
+            "_id" : "1",
+            "_index" : "account"
+        },
+                {
+            "_id" : "2",
+            "_index" : "logs"
+        }
+    ]
+}

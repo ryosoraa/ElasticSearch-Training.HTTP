@@ -1,0 +1,10 @@
+### get Index By primary key (id in last line is primary key in account index)
+GET http://localhost:9200/account/_doc/id
+
+### Get Index without MetaData
+GET http://localhost:9200/account/_source/id
+
+### Check Exist
+### Just Check index  there or not
+HEAD  http://localhost:9200/account/_doc/id
+
