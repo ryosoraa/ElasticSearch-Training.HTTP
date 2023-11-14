@@ -1,0 +1,58 @@
+PUT http://192.168.20.90:9200/rys_acc
+
+### 
+POST http://192.168.20.90:9200/rys_acc/_bulk
+Content-Type: application/json
+
+{"index": {}}
+{
+    "id": 1,
+    "email": "elda@gmail.com", 
+    "password": "elda", 
+    "register": "2023-10-27T09:07:05.000+00:00", 
+    "dataModels": [
+        {
+            "personalId": 1, 
+            "name": "Elda", 
+            "age": 17, 
+            "phone": 7836472, 
+            "country": "heart", 
+            "city": "brain"
+        }
+    ]
+}
+
+{"index": {}}
+{
+    "id": 2, 
+    "email": "Emily@gmail.com", 
+    "password": "Emily", 
+    "register": "2023-10-27T09:07:46.000+00:00", 
+    "dataModels": [
+        {
+            "personalId": 2, 
+            "name": "Emily", 
+            "age": 14, 
+            "phone": 997014, 
+            "country": "India", 
+            "city": "Sawai Madhopur"
+        }
+    ]
+}
+
+###
+POST http://192.168.20.90:9200/rys_acc/_bulk
+Content-Type: application/json
+
+{"index": {}}
+{"id": 1, "email": "elda@gmail.com", "password": "elda", "register": "2023-10-27T09:07:05.000+00:00", "dataModels": [{"personalId": 1, "name": "Elda", "age": 17, "phone": 7836472, "country": "heart", "city": "brain"}]}
+
+{"index": {}}
+{"id": 2, "email": "Emily@gmail.com", "password": "Emily", "register": "2023-10-27T09:07:46.000+00:00", "dataModels": [{"personalId": 2, "name": "Emily", "age": 14, "phone": 997014, "country": "India", "city": "Sawai Madhopur"}]}
+
+###
+
+POST http://192.168.20.90:9200/rys_acc/_bulk
+Content-Type: application/json
+
+< bulk.json

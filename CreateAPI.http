@@ -2,24 +2,23 @@
 GET http://192.168.20.90:9200/rys_accounts/_mapping
 
 ### Last line (id) is primary key in Index
-POST http://192.168.20.90:9200/rys_accounts/_create/id
+PUT http://192.168.20.90:9200/rys_accounts/_create/5
 Content-Type: application/json
-
 
   {
     "id": 21265,
-    "email": "Ryo@gmail.com",
-    "password": "Ryo",
+    "email": "Nureni@gmail.com",
+    "password": "Nureni",
     "register": "2023-10-27T09:11:36.000+00:00",
     "totalLogin": 34,
     "dataModels": [
       {
         "personalId": 21265,
-        "name": "Ryo",
+        "name": "Nureni",
         "age": 67,
         "phone": 1821278,
-        "country": "Whoville",
-        "city": "Cuttack"
+        "country": "korea",
+        "city": "busan"
       }
     ],
     "log": [
@@ -38,126 +37,6 @@ Content-Type: application/json
       {
         "logs_id": 75912,
         "login": "2023-10-27 09:25:49"
-      },
-      {
-        "logs_id": 75913,
-        "login": "2023-10-27 09:25:49"
-      },
-      {
-        "logs_id": 87412,
-        "login": "2023-10-27 10:13:55"
-      },
-      {
-        "logs_id": 87413,
-        "login": "2023-10-27 10:14:33"
-      },
-      {
-        "logs_id": 87414,
-        "login": "2023-10-27 10:14:34"
-      },
-      {
-        "logs_id": 87415,
-        "login": "2023-10-27 10:14:35"
-      },
-      {
-        "logs_id": 87416,
-        "login": "2023-10-27 10:14:36"
-      },
-      {
-        "logs_id": 87417,
-        "login": "2023-10-27 10:14:36"
-      },
-      {
-        "logs_id": 87418,
-        "login": "2023-10-27 10:14:37"
-      },
-      {
-        "logs_id": 87419,
-        "login": "2023-10-27 10:14:38"
-      },
-      {
-        "logs_id": 87420,
-        "login": "2023-10-27 10:14:38"
-      },
-      {
-        "logs_id": 87421,
-        "login": "2023-10-27 10:14:39"
-      },
-      {
-        "logs_id": 87422,
-        "login": "2023-10-27 10:14:40"
-      },
-      {
-        "logs_id": 87423,
-        "login": "2023-10-27 10:14:41"
-      },
-      {
-        "logs_id": 87424,
-        "login": "2023-10-27 10:14:41"
-      },
-      {
-        "logs_id": 87425,
-        "login": "2023-10-27 10:14:42"
-      },
-      {
-        "logs_id": 87426,
-        "login": "2023-10-27 11:19:27"
-      },
-      {
-        "logs_id": 164907,
-        "login": "2023-10-28 09:02:06"
-      },
-      {
-        "logs_id": 164908,
-        "login": "2023-10-28 09:02:06"
-      },
-      {
-        "logs_id": 164909,
-        "login": "2023-10-28 09:02:06"
-      },
-      {
-        "logs_id": 176780,
-        "login": "2023-10-31 13:41:22"
-      },
-      {
-        "logs_id": 176781,
-        "login": "2023-10-31 13:40:56"
-      },
-      {
-        "logs_id": 176783,
-        "login": "2023-10-31 13:45:15"
-      },
-      {
-        "logs_id": 176785,
-        "login": "2023-10-31 14:01:38"
-      },
-      {
-        "logs_id": 176786,
-        "login": "2023-10-31 14:01:52"
-      },
-      {
-        "logs_id": 176787,
-        "login": "2023-10-31 14:01:52"
-      },
-      {
-        "logs_id": 176788,
-        "login": "2023-10-31 14:01:53"
-      },
-      {
-        "logs_id": 176789,
-        "login": "2023-10-31 14:01:53"
-      },
-      {
-        "logs_id": 176790,
-        "login": "2023-10-31 14:01:53"
-      },
-      {
-        "logs_id": 176791,
-        "login": "2023-10-31 14:01:53"
-      },
-      {
-        "logs_id": 176792,
-        "login": "2023-10-31 14:01:54"
       }
     ]
   }
