@@ -1,6 +1,6 @@
 ### Update Index Mapping
 
-PUT http://localhost:9200/account/_mapping
+PUT http://192.168.20.90:9200/rys_accounts/_mapping
 Content-Type: application/json
 
 {
@@ -16,4 +16,4 @@ Content-Type: application/json
 
 
 ### ceck Mapping Index
-GET http://localhost:9200/account/_mapping
+GET http://192.168.20.90:9200/rys_accounts/_mapping

@@ -1,0 +1,10 @@
+POST http://192.168.20.90:9200/data-pileg/_search
+
+###
+POST http://192.168.20.90:9200/rys_accounts/_search
+
+###
+POST http://192.168.20.90:9200/rys_accounts/_search?sort=email:asc
+
+###
+POST http://192.168.20.90:9200/rys_accounts/_search?sort=totalLogin:dsc

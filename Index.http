@@ -1,26 +1,26 @@
 # Index in ElasticSearch same with Table in relational database, like mysql
 
 ### create index accouts
-PUT http://localhost:9200/account 
+PUT http://192.168.20.90:9200/rys_accounts 
 
 ### Create Index Logs
-PUT http://localhost:9200/logs
+PUT http://192.168.20.90:9200/logs
 
 ### Create Index PersonalData
-PUT http://localhost:9200/personal_data
+PUT http://192.168.20.90:9200/personal_data
 
 ### Create Index Dumps
-PUT http://localhost:9200/dumps
+PUT http://192.168.20.90:9200/dumps
 
 # ======================================================
 
 ### Get All Index in ElasticSearch
-GET http://localhost:9200/_cat/indices?v
+GET http://192.168.20.90:9200/_cat/indices?v
 
 # ======================================================
 
 ### Delete Index Dumps
-DELETE  http://localhost:9200/account
+DELETE  http://192.168.20.90:9200/rys_accounts
 
 # ======================================================
 

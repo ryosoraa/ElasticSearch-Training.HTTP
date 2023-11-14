@@ -1,8 +1,8 @@
 ### TO check the mapping your set earlier
-GET http://localhost:9200/account/_mapping
+GET http://192.168.20.90:9200/rys_accounts/_mapping
 
 ### Last line (id) is primary key in Index
-POST http://localhost:9200/account/_create/id
+POST http://192.168.20.90:9200/rys_accounts/_create/id
 Content-Type: application/json
 
 

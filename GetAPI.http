@@ -1,10 +1,10 @@
-### get Index By primary key (id in last line is primary key in account index)
-GET http://localhost:9200/account/_doc/id
+### get Index By primary key (id in last line is primary key in rys_accounts index)
+GET http://192.168.20.90:9200/rys_accounts/_doc/id
 
 ### Get Index without MetaData
-GET http://localhost:9200/account/_source/id
+GET http://192.168.20.90:9200/rys_accounts/_source/1
 
 ### Check Exist
 ### Just Check index  there or not
-HEAD  http://localhost:9200/account/_doc/id
-
+HEAD  http://192.168.20.90:9200/rys_accounts/_doc/id
+ 
