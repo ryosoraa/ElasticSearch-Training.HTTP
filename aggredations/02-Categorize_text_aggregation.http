@@ -1,0 +1,52 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+
+# Categories text aggredation adalah mengelompokan data berdasarkan kata tertentu
+# atau juga bisa mengondisikan suatu kata akan di tempatkan di bucket mana, 
+# seperti prety, beutiful akan di tempatkan di bucket positive tetapi harus di tentukan dulu yang 
+# akan masuk di suatu bucket itu kata seperti apa
+
+
+#  Categorize text aggregation adalah agregasi bucket yang digunakan untuk membagi teks menjadi bucket-bucket berdasarkan kategori. 
+#  Kategori-kategori tersebut dapat ditentukan dengan menggunakan
+#  kata tertentu, regular expression, atau kombinasi keduanya.
+
+# Contoh Regular expression \w+\_\d{3} | "kata_angka3"
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+# Di bawah ini hanya mengelompokan setiap kata / kalimat uniq
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "text_categories":{
+            "categorize_text": {
+                "field": "genre"
+            }
+        }
+    }
+}
+###
+
+# ASK
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "quality":{
+            "categorize_text": {
+                "field": "format",
+                "categorization_filters":["DVD"]
+            }
+        }
+    }
+}
+
+
