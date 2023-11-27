@@ -1,0 +1,16 @@
+
+@BodyUrl = http://192.168.20.90:9200
+
+POST {{BodyUrl}}/elrys_log/_search
+Content-Type: application/json
+
+{
+  "size": 0,
+  "aggs": {
+    "email": {
+      "terms": {
+        "field": "email.keyword"
+      }
+    }
+  }
+}

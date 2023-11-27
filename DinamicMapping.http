@@ -1,4 +1,41 @@
+@url = "http://192.168.20.90:9200"
+
+###
+GET http://192.168.20.90:9200/elrys_log
+
 ### Update Index Mapping
+
+PUT http://192.168.20.90:9200/elrys_log
+
+###
+
+POST http://192.168.20.90:9200/elrys_log/_mapping
+Content-Type: application/json
+
+{
+	"properties": {
+		"timestamp": {
+			"type": "date",
+			"format": "yyyy-MM-dd HH:mm:ss.SSS"
+		},
+		"email": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword"
+				}
+			}
+		},
+		"userAgent": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword"
+				}
+			}
+		}
+	}
+}
 
 PUT http://192.168.20.90:9200/rys_accounts/_mapping
 Content-Type: application/json

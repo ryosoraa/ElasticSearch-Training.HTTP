@@ -1,0 +1,63 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_log
+
+# Mengelompokkan data dalam range Tertentu tergantung dari jumlah total data
+# misal memiliki 60 data dan ingin di jadikan 6 bucket, maka setiap bucket akan menyimpan data dalam range 10 menit
+# jika ada dalam rentang 10 menit data tidak dimasukan maka sampai data dimasukan kembali buckets akan tetap di buat
+# tetapi berisi 0
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "Auto_date":{
+            "auto_date_histogram":{
+                "field": "timestamp",
+                "buckets": 7
+            }
+        }
+    }
+}
+
+# Juga bisa menambahkan format untuk mengatur bagaimana data di tampilkan
+# tetapi datanya akan tetap di short berdasarkan data yang paling kecil
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "Auto_date":{
+            "auto_date_histogram":{
+                "field": "timestamp",
+                "buckets": 7,
+                "format": "yyyy-MM-dd"
+            }
+        }
+    }
+}
+
+
+# jika ingin merubah minimum range atau intervalnya bisa menggunakan ini
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "Auto_date":{
+            "auto_date_histogram":{
+                "field": "timestamp",
+                "buckets": 7,
+                "minimum_interval": "minute"
+            }
+        }
+    }
+}
