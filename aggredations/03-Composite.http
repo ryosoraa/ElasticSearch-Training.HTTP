@@ -1,0 +1,170 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+
+# Aggregation composite adalah jenis aggregation yang memungkinkan 
+# untuk menggabungkan hasil dari beberapa aggregation
+
+
+# The sources parameter can be any of the following types:
+
+# Terms
+# Histogram
+# Date histogram
+# GeoTile grid
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "genre":{
+            "terms":{
+                "field": "format.keyword"
+            },
+            "aggs":{
+            "total":{
+                "value_count": {
+                    "field": "_id"
+                    }
+                },
+                "price":{
+                "avg":{
+                    "field": "price"
+                    }
+                }
+            }
+        }
+    }
+}
+
+### TERMS
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "composite":{
+                "sources": [{
+                   "formats":{
+                     "terms": {
+                        "field": "format.keyword"
+                    }
+                   }
+                }]
+            }
+        }
+    }
+}
+
+### HISTOGRAM
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "composite":{
+                "sources": [{
+                    "histo":{
+                        "histogram":{
+                            "field": "price",
+                            "interval": 5
+                        }
+                    }
+                }]
+            }
+        }
+    }
+}
+
+
+### HISTOGRAM
+POST {{BodyUrl}}/elrys_log/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "composite":{
+                "sources": [{
+                    "Date":{
+                        "date_histogram":{
+                            "field": "timestamp",
+                            "calendar_interval": "day",
+                            "format": "iso8601"
+                        }
+                    }
+                }]
+            }
+        }
+    }
+}
+
+### PAGING
+POST {{BodyUrl}}/elrys_log/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "composite":{
+                "size" : 5,
+                "sources": [{
+                    "Date":{
+                        "date_histogram":{
+                            "field": "timestamp",
+                            "calendar_interval": "minute",
+                            "format": "iso8601"
+                        }
+                    }
+                },{
+                    "email":{
+                        "terms":{
+                            "field": "email.keyword"
+                        }
+                    }
+                }]
+            }
+        }
+    }
+}
+
+### PAGING
+POST {{BodyUrl}}/elrys_log/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "composite":{
+                "size" : 5,
+                "sources": [{
+                    "Date":{
+                        "date_histogram":{
+                            "field": "timestamp",
+                            "calendar_interval": "minute",
+                            "format": "iso8601",
+                            "order": "desc"
+                        }
+                    }
+                },{
+                    "email":{
+                        "terms":{
+                            "field": "email.keyword"
+                        }
+                    }
+                }]
+            }
+        }
+    }
+}

@@ -5,7 +5,8 @@
 # misal memiliki 60 data dan ingin di jadikan 6 bucket, maka setiap bucket akan menyimpan data dalam range 10 menit
 # jika ada dalam rentang 10 menit data tidak dimasukan maka sampai data dimasukan kembali buckets akan tetap di buat
 # tetapi berisi 0
-
+###
+POST {{BodyUrl}}/{{Index}}/_search
 ###
 POST {{BodyUrl}}/{{Index}}/_search
 Content-Type: application/json
