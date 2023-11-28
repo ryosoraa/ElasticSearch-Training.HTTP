@@ -1,0 +1,20 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_log
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "experiment":{
+            "date_histogram":{
+                "field": "timestamp",
+                "calendar_interval": "day"
+            }
+        }
+    }
+}
