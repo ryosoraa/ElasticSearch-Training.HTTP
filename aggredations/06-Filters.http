@@ -1,0 +1,53 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "categories":{
+            "filters":{
+                "filters":{
+                    "bad":{
+                        "match":{
+                            "format": "DVD"
+                        }
+                    },
+                    "good":{
+                        "match":{
+                            "format": "Blu-ray"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+###
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "categories":{
+            "filters":{
+                "filters":{
+                    "bad":{
+                        "term":{
+                            "type": "format.keyword"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

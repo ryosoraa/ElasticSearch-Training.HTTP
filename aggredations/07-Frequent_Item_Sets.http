@@ -1,0 +1,19 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+
+### 
+POST {{BodyUrl}}/{{Index}}/_async_search
+Content-Type: application/json
+
+{
+    "aggs":{
+        "experiment":{
+            "frequent_item_sets":{
+                "minimum_set_size": 3,
+                "fields":[{
+                    "field": "type.keyword"
+                }]
+            }
+        }
+    }
+}

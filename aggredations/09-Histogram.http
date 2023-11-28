@@ -1,0 +1,21 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs":{
+        "number":{
+            "histogram":{
+                "field": "release_year",
+                "interval" : 1,
+                "min_doc_count":1
+            }
+        }
+    }
+}
