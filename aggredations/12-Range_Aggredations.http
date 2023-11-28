@@ -1,0 +1,62 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_film
+###
+POST {{BodyUrl}}/{{Index}}/_search
+###
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "experiment":{
+            "range":{
+                "field": "price",
+                "ranges":[{
+                    "from": "19"
+                },
+                {
+                    "to": "30"
+                }]
+            }
+        }
+    }
+}
+
+###
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "experiment":{
+            "range":{
+                "field":"price",
+                "ranges":[
+                    {"key": "cheap", "to": 19},
+                    {"key": "advanced", "from": 20, "to": 28},
+                    {"key": "expensive", "from": 29}
+                ]
+            }
+        }
+    }
+}
+
+###
+
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "types":{
+            "rare_terms":{
+                "field":"price"
+            }
+        }
+    }
+}
