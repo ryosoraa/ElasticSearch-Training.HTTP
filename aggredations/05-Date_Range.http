@@ -1,0 +1,68 @@
+@BodyUrl = http://192.168.20.90:9200
+@Index = elrys_log
+
+
+# agregasi multi-bucket yang digunakan untuk membagi dokumen
+# berdasarkan rentang waktu. Agregasi ini mirip dengan range aggregation
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "experiment":{
+            "date_range":{
+                "field": "timestamp",
+                "format": "yyyy-MM-dd",
+                "ranges": [{
+                    "from" : "2023-11-27",
+                    "to" : "2023-11-28"
+                }]
+            }
+        }
+    }
+}
+
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "experiment":{
+            "date_range":{
+                "field": "timestamp",
+                "format": "yyyy-MM",
+                "ranges": [{
+                    "from" : "2023-11",
+                    "to" : "2023-12"
+                }]
+            }
+        }
+    }
+}
+###
+POST {{BodyUrl}}/{{Index}}/_search
+Content-Type: application/json
+
+{
+    "size":0,
+    "aggs":{
+        "experiment":{
+            "date_range":{
+                "field": "timestamp",
+                "format": "yyyy-MM-dd HH:mm:ss.SSS",
+                "ranges": [{
+                    "from" : "2023-11-27 20:09:31.428",
+                    "to" : "2023-11-27 20:09:48.274"
+                }]
+            }
+        }
+    }
+}
